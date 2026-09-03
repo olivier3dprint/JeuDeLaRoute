@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — PhotoCalc</title>
+<style>
+  :root {
+    --fond: #0c1220;
+    --texte: #e7edf2;
+    --texte-att: #9fb0bd;
+    --accent: #9c8cf5;
+    --accent-2: #7fd8e8;
+    --bordure: #253039;
+    --panneau: #161d2b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 24px 96px;
+  }
+
+  html:not([data-lang="en"]) .txt-en { display: none; }
+  html[data-lang="en"] .txt-fr { display: none; }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  nav a {
+    color: var(--texte-att);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  nav a:hover { color: var(--accent); }
+  #bouton-langue {
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    color: var(--texte);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #bouton-langue:hover { border-color: var(--accent); }
+
+  header { margin: 24px 0 40px; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .badge .pastille {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--accent-2);
+    box-shadow: 0 0 16px rgba(245, 167, 66, 0.5);
+  }
+  .badge span {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--texte-att);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+  h1 { font-size: 1.9rem; margin: 0 0 8px; }
+  .maj { color: var(--texte-att); font-size: 0.9rem; margin: 0; }
+  h2 {
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin: 40px 0 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordure);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p { margin: 0 0 14px; color: var(--texte); }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); }
+  strong { color: #fff; }
+  .contact {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 10px 16px;
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 8px;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordure);
+    color: var(--texte-att);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <nav>
+    <a href="index.html"><span class="txt-fr">&larr; Accueil</span><span class="txt-en">&larr; Home</span></a>
+    <button id="bouton-langue" type="button">LANGUAGE: ENGLISH</button>
+  </nav>
+
+  <header>
+    <div class="badge"><span class="pastille"></span><span>PhotoCalc</span></div>
+    <h1 class="txt-fr">Politique de confidentialité</h1>
+    <h1 class="txt-en">Privacy Policy</h1>
+    <p class="maj txt-fr">Dernière mise à jour : 2 septembre 2026</p>
+    <p class="maj txt-en">Last updated: September 2, 2026</p>
+  </header>
+
+  <p class="txt-fr">PhotoCalc est une application développée par Olivier Popiers.
+  Cette politique explique quelles données l'application traite, pourquoi, et comment
+  exercer vos droits.</p>
+  <p class="txt-en">PhotoCalc is an app developed by Olivier Popiers. This policy
+  explains what data the app processes, why, and how to exercise your rights.</p>
+
+  <h2 class="txt-fr">Ce que l'application collecte</h2>
+  <h2 class="txt-en">What the app collects</h2>
+
+  <p class="txt-fr"><strong>Données enregistrées sur votre appareil.</strong> Les
+  profils d'appareils photo et d'objectifs que vous créez, l'appareil et l'objectif
+  sélectionnés, vos préférences d'unités et vos favoris sont enregistrés localement
+  sur votre téléphone. Rien de tout cela n'est envoyé à un serveur : les calculs et
+  vos données personnalisées restent sur l'appareil. Ces données sont supprimées
+  lorsque vous désinstallez l'application.</p>
+  <p class="txt-en"><strong>Data stored on your device.</strong> The camera and lens
+  profiles you create, the selected camera and lens, your unit preferences and your
+  favorites are saved locally on your phone. None of this is sent to a server:
+  calculations and your custom data stay on the device. This data is removed when you
+  uninstall the app.</p>
+
+  <p class="txt-fr"><strong>Publicité.</strong> L'application affiche une bannière
+  publicitaire via Google AdMob pour rester gratuite. AdMob peut accéder à
+  l'identifiant publicitaire de votre appareil pour mesurer l'audience et, si vous y
+  consentez, personnaliser les annonces. Le traitement effectué par Google est décrit
+  dans sa <a href="https://policies.google.com/technologies/partner-sites"
+  target="_blank" rel="noopener">politique de partenariat publicitaire</a>.</p>
+  <p class="txt-en"><strong>Advertising.</strong> The app shows a banner ad via Google
+  AdMob to stay free. AdMob may access your device's advertising identifier to
+  measure audience and, with your consent, personalize ads. Google's processing is
+  described in its <a href="https://policies.google.com/technologies/partner-sites"
+  target="_blank" rel="noopener">partner sites policy</a>.</p>
+
+  <p class="txt-fr"><strong>Consentement.</strong> Dans l'Espace économique européen,
+  au Royaume-Uni ou en Suisse, un message de consentement (RGPD/TCF, via Google UMP)
+  s'affiche au premier lancement, avant toute publicité personnalisée. Vous pouvez
+  revenir sur votre choix à tout moment depuis le bouton « Confidentialité » des
+  options.</p>
+  <p class="txt-en"><strong>Consent.</strong> In the European Economic Area, the UK or
+  Switzerland, a consent message (GDPR/TCF, via Google UMP) appears on first launch,
+  before any personalized ad. You can change your choice at any time from the
+  "Privacy" button in settings.</p>
+
+  <h2 class="txt-fr">Ce que l'application ne fait pas</h2>
+  <h2 class="txt-en">What the app does not do</h2>
+  <ul class="txt-fr">
+    <li>Aucun compte à créer, aucune adresse e-mail demandée.</li>
+    <li>Aucun accès à votre position, vos contacts, votre appareil photo, votre
+    micro, vos fichiers ou votre carnet d'adresses.</li>
+    <li>Aucune donnée vendue à des tiers.</li>
+    <li>Aucun achat en argent réel.</li>
+    <li>Aucun calcul ne nécessite de connexion Internet ; seule la bannière
+    publicitaire en utilise une.</li>
+  </ul>
+  <ul class="txt-en">
+    <li>No account to create, no email address requested.</li>
+    <li>No access to your location, contacts, camera, microphone, files or address
+    book.</li>
+    <li>No data sold to third parties.</li>
+    <li>No real-money purchases.</li>
+    <li>No calculation requires an internet connection; only the banner ad uses
+    one.</li>
+  </ul>
+
+  <h2 class="txt-fr">Durée de conservation</h2>
+  <h2 class="txt-en">Retention period</h2>
+  <p class="txt-fr">Aucune donnée n'est conservée par le développeur : rien n'est
+  envoyé à un serveur propre à l'application. Seul Google (AdMob) peut conserver
+  l'identifiant publicitaire selon sa propre politique. Les données locales (profils
+  d'appareils, objectifs, préférences) restent sur votre appareil jusqu'à la
+  désinstallation.</p>
+  <p class="txt-en">No data is retained by the developer: nothing is sent to an
+  app-specific server. Only Google (AdMob) may retain the advertising identifier
+  under its own policy. Local data (camera and lens profiles, preferences) stays on
+  your device until uninstall.</p>
+
+  <h2 class="txt-fr">Vos droits</h2>
+  <h2 class="txt-en">Your rights</h2>
+  <p class="txt-fr">Pour toute question sur les données traitées par AdMob, voir la
+  politique de Google liée ci-dessus. Pour toute autre question, ou pour supprimer
+  l'ensemble de vos données locales, désinstallez l'application, ou écrivez à
+  l'adresse ci-dessous.</p>
+  <p class="txt-en">For questions about data processed by AdMob, see Google's policy
+  linked above. For any other question, or to remove all your local data, uninstall
+  the app, or write to the address below.</p>
+
+  <h2 class="txt-fr">Enfants</h2>
+  <h2 class="txt-en">Children</h2>
+  <p class="txt-fr">L'application ne s'adresse pas spécifiquement aux enfants et ne
+  collecte pas sciemment de données auprès d'eux.</p>
+  <p class="txt-en">The app is not specifically directed at children and does not
+  knowingly collect data from them.</p>
+
+  <h2 class="txt-fr">Modifications</h2>
+  <h2 class="txt-en">Changes</h2>
+  <p class="txt-fr">Toute modification de cette politique sera publiée à cette même
+  adresse, avec une date de mise à jour actualisée.</p>
+  <p class="txt-en">Any change to this policy will be published at this same
+  address, with an updated date.</p>
+
+  <footer>
+    <h2 class="txt-fr" style="border-top:none;padding-top:0;margin-top:0;">Contact</h2>
+    <h2 class="txt-en" style="border-top:none;padding-top:0;margin-top:0;">Contact</h2>
+    <span class="contact">olivier3dprint@gmail.com</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var html = document.documentElement;
+  var bouton = document.getElementById('bouton-langue');
+
+  function appliquer(langue) {
+    html.setAttribute('data-lang', langue);
+    bouton.textContent = langue === 'en' ? 'LANGUE : FRANÇAIS' : 'LANGUAGE: ENGLISH';
+  }
+
+  var demarrage = params.get('lang') === 'en' ? 'en' : 'fr';
+  appliquer(demarrage);
+
+  bouton.addEventListener('click', function () {
+    appliquer(html.getAttribute('data-lang') === 'en' ? 'fr' : 'en');
+  });
+})();
+</script>
+</body>
+</html>
