@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Jeu de la Route</title>
+<meta name="description" content="Codes pays, départements français et capitales d'Europe : le quiz de géographie qui se joue en voiture, hors ligne.">
+<style>
+  :root {
+    --fond: #011435;
+    --texte: #eef2f9;
+    --texte-att: #b9c6e4;
+    --accent: #ffc300;
+    --accent-2: #3e6be0;
+    --bordure: #173066;
+    --panneau: #04173a;
+    --panneau-haut: #0a2150;
+    --vert: #2cb271;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 24px 96px;
+  }
+  a { color: var(--accent); }
+
+  html:not([data-lang="en"]) .txt-en { display: none; }
+  html[data-lang="en"] .txt-fr { display: none; }
+
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+  }
+  #bouton-langue {
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    color: var(--texte);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #bouton-langue:hover { border-color: var(--accent); }
+
+  header.hero {
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .badge .pastille {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--accent);
+    box-shadow: 0 0 16px rgba(255, 195, 0, 0.45);
+  }
+  .badge span {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--texte-att);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+
+  /* Maquette de l'écran de partie, en CSS pur : la page du site reste un seul
+     fichier, sans image à déployer à côté. */
+  .maquette {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 28px;
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 20px;
+    padding: 16px;
+    text-align: left;
+  }
+  .maquette .entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.72rem;
+    color: var(--texte-att);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .maquette .entete b { color: var(--accent); font-size: 1.1rem; }
+  .maquette .consigne {
+    font-size: 0.74rem;
+    color: var(--texte-att);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .maquette .question {
+    font-size: 2.1rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .maquette .choix {
+    background: var(--panneau-haut);
+    border: 1px solid var(--bordure);
+    border-radius: 10px;
+    padding: 9px 12px;
+    margin-bottom: 7px;
+    font-size: 0.84rem;
+  }
+  .maquette .choix.juste {
+    background: var(--vert);
+    border-color: var(--vert);
+    color: #04231a;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    margin: 0 0 4px;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+  .tagline {
+    font-size: 1.1rem;
+    color: var(--texte);
+    max-width: 560px;
+    margin: 0 auto 20px;
+  }
+  .bientot {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 10px;
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    color: var(--texte-att);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin: 56px 0 20px;
+    text-align: center;
+  }
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .fonctionnalite {
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .fonctionnalite .titre {
+    font-weight: 700;
+    color: var(--accent-2);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .fonctionnalite p {
+    margin: 0;
+    color: var(--texte-att);
+    font-size: 0.92rem;
+  }
+
+  .bandeau {
+    margin-top: 56px;
+    text-align: center;
+    padding: 28px 20px;
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+  }
+  .bandeau p {
+    margin: 0;
+    color: var(--texte-att);
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordure);
+    color: var(--texte-att);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  footer a { color: var(--texte-att); }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <nav>
+    <button id="bouton-langue" type="button">LANGUAGE: ENGLISH</button>
+  </nav>
+
+  <header class="hero">
+    <div class="badge"><span class="pastille"></span><span>Le Jeu de la Route</span></div>
+
+    <div class="maquette" aria-hidden="true">
+      <div class="entete"><span>Tous &middot; Série</span><span><b>8</b> série</span></div>
+      <div class="consigne txt-fr">À QUEL PAYS APPARTIENT CE CODE ?</div>
+      <div class="consigne txt-en">WHICH COUNTRY DOES THIS CODE BELONG TO?</div>
+      <div class="question">SLO</div>
+      <div class="choix">Slovaquie</div>
+      <div class="choix juste">Slovénie</div>
+      <div class="choix">Croatie</div>
+      <div class="choix">Serbie</div>
+    </div>
+
+    <h1>Le Jeu de la Route</h1>
+    <p class="tagline txt-fr">Codes pays, départements français et capitales d'Europe :
+    le quiz de géographie qui se joue en voiture. Une seule erreur, et la partie
+    s'arrête.</p>
+    <p class="tagline txt-en">Country codes, French department numbers and European
+    capitals: the geography quiz you play in the car. One mistake and the game is over.
+    <em>The app is in French.</em></p>
+
+    <span class="bientot txt-fr">BIENTÔT SUR GOOGLE PLAY</span>
+    <span class="bientot txt-en">COMING SOON ON GOOGLE PLAY</span>
+  </header>
+
+  <h2 class="txt-fr">Ce que vous apprendrez</h2>
+  <h2 class="txt-en">What you will learn</h2>
+
+  <div class="grille">
+    <div class="fonctionnalite">
+      <div class="titre txt-fr">Cinq catégories</div>
+      <div class="titre txt-en">Five categories</div>
+      <p class="txt-fr">Codes des 27 pays de l'UE, codes de l'Europe géographique, 101
+      départements français, capitales de l'UE et capitales de l'Europe — environ 255
+      entrées, toutes gratuites.</p>
+      <p class="txt-en">Codes of the 27 EU countries, codes of geographical Europe, the
+      101 French departments, EU capitals and European capitals — about 255 entries, all
+      free.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre txt-fr">Trois modes</div>
+      <div class="titre txt-en">Three modes</div>
+      <p class="txt-fr">Série (une erreur et c'est fini), Contre-la-montre (60 secondes,
+      une erreur coûte 3 secondes) et Entraînement, sans score ni fin.</p>
+      <p class="txt-en">Streak (one mistake ends it), Time attack (60 seconds, a mistake
+      costs 3 seconds) and Practice, with no score and no end.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre txt-fr">Deux façons de répondre</div>
+      <div class="titre txt-en">Two answer formats</div>
+      <p class="txt-fr">QCM à quatre choix, jouable d'une main. Ou Révélation : vous
+      répondez à voix haute, puis vous vous auto-évaluez — parfait à plusieurs autour d'un
+      seul téléphone.</p>
+      <p class="txt-en">Four-choice quiz, playable one-handed. Or Reveal: you answer out
+      loud, then rate yourself — perfect for several people around a single phone.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre txt-fr">Pensé pour la voiture</div>
+      <div class="titre txt-en">Built for the car</div>
+      <p class="txt-fr">Gros boutons, texte lisible, thème sombre par défaut pour la
+      conduite de nuit, mode portrait à une main.</p>
+      <p class="txt-en">Large buttons, readable text, dark theme by default for night
+      driving, one-handed portrait mode.</p>
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <p class="txt-fr">100 % hors ligne — aucun compte, aucune inscription, aucune donnée
+    envoyée à un serveur. Une publicité occasionnelle, entre deux parties, finance
+    l'application gratuite.</p>
+    <p class="txt-en">100% offline — no account, no sign-up, no data sent to a server. An
+    occasional ad between games funds the free app.</p>
+  </div>
+
+  <footer>
+    <p class="txt-fr"><a href="confidentialite.html">Politique de confidentialité</a> &middot; Contact : <a href="mailto:olivier3dprint@gmail.com">olivier3dprint@gmail.com</a></p>
+    <p class="txt-en"><a href="confidentialite.html?lang=en">Privacy Policy</a> &middot; Contact: <a href="mailto:olivier3dprint@gmail.com">olivier3dprint@gmail.com</a></p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var html = document.documentElement;
+  var bouton = document.getElementById('bouton-langue');
+
+  function appliquer(langue) {
+    html.setAttribute('data-lang', langue);
+    bouton.textContent = langue === 'en' ? 'LANGUE : FRANÇAIS' : 'LANGUAGE: ENGLISH';
+  }
+
+  var demarrage = params.get('lang') === 'en' ? 'en' : 'fr';
+  appliquer(demarrage);
+
+  bouton.addEventListener('click', function () {
+    appliquer(html.getAttribute('data-lang') === 'en' ? 'fr' : 'en');
+  });
+})();
+</script>
+</body>
+</html>
