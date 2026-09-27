@@ -89,14 +89,17 @@ Play est la page HTML publiée [confidentialite.html](confidentialite.html) — 
 seule URL pour les deux langues, puisque Play n'accepte qu'un champ de politique de
 confidentialité par application, pas par fiche linguistique.
 
-À pousser sur `github.com/olivier3dprint/JeuDeLaRoute` (dépôt public dédié au site) puis
-à publier via GitHub Pages. Procédure complète et URLs finales dans
-[fiche-play.md](fiche-play.md), section « Site — page d'accueil et politique de
+Publiée sur `github.com/olivier3dprint/JeuDeLaRoute` (dépôt public dédié au site) via
+GitHub Pages, et **en ligne** à
+`https://olivier3dprint.github.io/JeuDeLaRoute/confidentialite.html` — vérifié le
+3 septembre 2026, contenu identique au fichier de ce dossier. Procédure de republication
+dans [fiche-play.md](fiche-play.md), section « Site — page d'accueil et politique de
 confidentialité ».
 
-> ⚠️ **L'URL est déjà déclarée dans la console AdMob** (message de consentement
-> européen) alors que la page n'est pas encore en ligne. Publier le dépôt est donc la
-> première chose à faire, avant même la création de la fiche Play.
+> ⚠️ Cette URL est référencée à trois endroits : la console AdMob (message de consentement
+> européen), la chaîne `url_confidentialite` de
+> [strings.xml](../app/src/main/res/values/strings.xml) et, à terme, la fiche Play. Elle ne
+> peut plus changer sans mettre les trois à jour ensemble.
 
 Si le texte change (achat « Sans publicité », classement en ligne du backlog, nouvelle
 donnée collectée…), modifier **deux fichiers** : celui-ci pour la trace en français, et

@@ -142,17 +142,18 @@
     max-width: 560px;
     margin: 0 auto 20px;
   }
-  .bientot {
+  .bouton-play {
     display: inline-block;
     padding: 12px 28px;
     border-radius: 10px;
-    background: var(--panneau);
-    border: 1px solid var(--bordure);
-    color: var(--texte-att);
+    background: var(--accent);
+    color: var(--fond);
     font-weight: 700;
     letter-spacing: 0.03em;
     font-size: 0.9rem;
+    text-decoration: none;
   }
+  .bouton-play:hover { filter: brightness(1.08); }
 
   h2 {
     font-size: 1.3rem;
@@ -239,8 +240,8 @@
     capitals: the geography quiz you play in the car. One mistake and the game is over.
     <em>The app is in French.</em></p>
 
-    <span class="bientot txt-fr">BIENTÔT SUR GOOGLE PLAY</span>
-    <span class="bientot txt-en">COMING SOON ON GOOGLE PLAY</span>
+    <a class="bouton-play txt-fr" href="https://play.google.com/store/apps/details?id=com.olivier.jeudelaroute&amp;hl=fr">DISPONIBLE SUR GOOGLE PLAY</a>
+    <a class="bouton-play txt-en" href="https://play.google.com/store/apps/details?id=com.olivier.jeudelaroute&amp;hl=en">GET IT ON GOOGLE PLAY</a>
   </header>
 
   <h2 class="txt-fr">Ce que vous apprendrez</h2>

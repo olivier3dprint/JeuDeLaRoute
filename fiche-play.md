@@ -4,11 +4,27 @@ Textes à copier-coller dans la console Play. Les limites de caractères indiqu�
 celles imposées par Play ; le décompte réel de chaque texte est donné à côté — à
 revérifier si le texte est modifié.
 
-⚠️ **Application pas encore publiée** (`versionCode = 1` / `versionName = "1.0"` dans
-[app/build.gradle.kts](../app/build.gradle.kts), `applicationId = "com.olivier.jeudelaroute"`)
-— cette fiche est une création, pas une mise à jour. Contenu à jour au 3 septembre 2026
-d'après [jeu-de-la-route-spec.md](../jeu-de-la-route-spec.md) : 5 catégories, 3 modes,
-2 formats de réponse, scores et statistiques locaux, interstitiel AdMob de fin de partie.
+✅ **Application publiée sur Google Play** :
+<https://play.google.com/store/apps/details?id=com.olivier.jeudelaroute>
+(`applicationId = "com.olivier.jeudelaroute"`). Version en ligne vérifiée le
+27 septembre 2026 : `versionName = "2026.09.07.2"` (`versionCode = 4` dans
+[app/build.gradle.kts](../app/build.gradle.kts)) — le prochain envoi devra donc porter un
+`versionCode` ≥ 5. Nom et description courte affichés sur Play identiques aux textes
+ci-dessous : les modifier ici **puis** dans la console, sinon cette fiche cesse d'être la
+référence.
+
+Contenu toujours conforme à [jeu-de-la-route-spec.md](../jeu-de-la-route-spec.md) :
+5 catégories (27 + 50 + 101 + 27 + 50 = 255 entrées dans
+[assets/data/](../app/src/main/assets/data)), 3 modes, 2 formats de réponse, scores et
+statistiques locaux, interstitiel AdMob de fin de partie.
+
+> **Historique de publication** — les deux premiers envois ont été refusés par Google
+> pour un plantage au démarrage, invisible en debug : deux suppressions silencieuses par
+> R8 (sérialiseurs kotlinx.serialization, puis constructeur de `WorkDatabase_Impl` tiré
+> par AdMob via WorkManager). Correctifs commentés dans
+> [app/proguard-rules.pro](../app/proguard-rules.pro). Avant tout nouvel envoi :
+> **tester le build release signé sur un vrai téléphone**, pas seulement vérifier que
+> `bundleRelease` réussit.
 
 **Fiche en français uniquement.** Contrairement à PhotoCalc, l'application n'est pas
 traduite : son interface et surtout son contenu sont français (« Maine-et-Loire »,
@@ -145,11 +161,14 @@ par [ConsentementPublicitaire.kt](../app/src/main/java/com/olivier/jeudelaroute/
 avec un point d'entrée « Choix publicitaires » dans Réglages
 ([ReglagesScreen.kt](../app/src/main/java/com/olivier/jeudelaroute/ui/reglages/ReglagesScreen.kt)).
 
-L'application est déjà rattachée au message de consentement européen du compte AdMob
-(5 applications désormais), avec l'URL de confidentialité ci-dessous, et **le message est
-publié**. Deux réserves : un bloc d'annonces neuf met jusqu'à une heure à diffuser, et
-l'application reste en état *Examen requis* tant qu'elle n'est pas liée à une plate-forme
-de téléchargement — c'est-à-dire tant que la fiche Play n'existe pas.
+L'application est rattachée au message de consentement européen du compte AdMob
+(6 applications), avec l'URL de confidentialité ci-dessous, et **le message est publié**
+— vérifié dans la console le 3 septembre 2026.
+
+> ☐ **À vérifier dans AdMob maintenant que la fiche existe** : l'application doit être liée à sa fiche
+> Play (Applications → Paramètres de l'application → *Plate-formes de téléchargement*).
+> Tant que ce n'est pas fait, elle reste en état *Examen requis* et les annonces servies
+> sont limitées.
 
 ## Visuels
 
@@ -173,23 +192,30 @@ que la politique de confidentialité doit être lisible sans authentification.
 un sous-dossier : en mode `main` / `/ (root)`, GitHub Pages ne sert `index.html` qu'à la
 racine).
 
-| Fichier | Rôle | URL une fois publié |
-|---|---|---|
-| `index.html` | Page d'accueil, bilingue | `https://olivier3dprint.github.io/JeuDeLaRoute/` |
-| `confidentialite.html` | Politique de confidentialité, bilingue (FR par défaut, `?lang=en` force l'anglais) | `.../confidentialite.html` |
+| Fichier | Rôle | URL | État |
+|---|---|---|---|
+| `index.html` | Page d'accueil, bilingue | `https://olivier3dprint.github.io/JeuDeLaRoute/` | **modifiée localement le 27/09/2026, à republier** |
+| `confidentialite.html` | Politique de confidentialité, bilingue (FR par défaut, `?lang=en` force l'anglais) | `.../confidentialite.html` | **en ligne** (HTTP 200) |
 
-> ⚠️ **Le dépôt public doit s'appeler exactement `JeuDeLaRoute`** : cette URL est **déjà
-> saisie dans la console AdMob** (message de consentement européen). Un autre nom casse le
-> lien. Le futur dépôt privé du code devra donc porter un autre nom (`JeuDeLaRouteApp`,
-> par exemple) — ou alors changer les deux, site et AdMob, ensemble.
+Vérifié le 27 septembre 2026 : les deux pages en ligne étaient **strictement identiques**
+aux fichiers de ce dossier (comparaison octet par octet) avant la modification de
+`index.html` décrite plus bas. `confidentialite.html` n'a pas changé. Les fichiers d'ici
+restent la source ; toute correction se fait ici puis se repousse sur le dépôt du site.
 
-La page d'accueil n'a pas de lien « Télécharger sur Google Play » actif : l'app n'est pas
-encore publiée. Bandeau « BIENTÔT SUR GOOGLE PLAY » / « COMING SOON ON GOOGLE PLAY » — à
-remplacer par un vrai lien une fois la fiche en ligne (chercher `bientot` dans
-`index.html`).
+> ⚠️ **Le dépôt public s'appelle `JeuDeLaRoute`**, et cette URL est saisie à trois
+> endroits : la console AdMob (message de consentement européen), la chaîne
+> `url_confidentialite` de [strings.xml](../app/src/main/res/values/strings.xml) — lue par
+> le bouton « Règles de confidentialité » des Réglages — et la fiche Play. Renommer
+> le dépôt casse les trois d'un coup. Le code source, lui, vit dans un dépôt distinct,
+> `olivier3dprint/JeuDeLaRouteSources`.
 
-**À faire, dans l'ordre** (commandes à lancer dans ton propre terminal — aucune
-authentification GitHub ne passe par Claude) :
+Le bandeau inactif « BIENTÔT SUR GOOGLE PLAY » de la page d'accueil a été remplacé le
+27 septembre 2026 par un vrai bouton « DISPONIBLE SUR GOOGLE PLAY » / « GET IT ON GOOGLE
+PLAY » pointant vers la fiche (classe `bouton-play` dans `index.html`). **Cette version
+n'est pas encore en ligne** : la republier avec les commandes ci-dessous.
+
+**Pour republier après une modification** (commandes à lancer dans ton propre terminal —
+aucune authentification GitHub ne passe par Claude) :
 
 ```bash
 git clone https://github.com/olivier3dprint/JeuDeLaRoute.git jeu-de-la-route-site
@@ -204,31 +230,38 @@ copy "D:\dev\Jeu de la route\playstore\confidentialite.html" jeu-de-la-route-sit
 ```
 
 ```bash
-cd jeu-de-la-route-site && git add index.html confidentialite.html && git commit -m "Ajoute la page d'accueil bilingue et la politique de confidentialite" && git push
+cd jeu-de-la-route-site && git add index.html confidentialite.html && git commit -m "Met a jour la page d'accueil et la politique de confidentialite" && git push
 ```
 
-Si GitHub Pages n'est pas encore activé sur le dépôt, l'activer après le push
-(Settings → Pages → branche `main` / dossier racine).
+Pour contrôler que la mise en ligne a bien pris (doit répondre `200`) :
 
-## Champs restant à remplir
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" https://olivier3dprint.github.io/JeuDeLaRoute/confidentialite.html
+```
+
+## Champs de la console Play (renseignés)
 
 ⚠️ **La politique de confidentialité n'est PAS un champ par langue** dans la Play Console
 (Surveiller et améliorer → Règles et programmes → Contenu de l'application → Règles de
 confidentialité) — un seul champ pour toute l'application, d'où la page bilingue unique
 `confidentialite.html`.
 
-- **Politique de confidentialité** — coller l'URL `confidentialite.html` ci-dessus une
-  fois GitHub Pages activé. **La page n'est pas encore en ligne alors que l'URL est déjà
-  déclarée dans AdMob** : c'est le point le plus urgent de cette liste.
-- **Site web** (facultatif) — `https://olivier3dprint.github.io/JeuDeLaRoute/`.
-- **Adresse e-mail de contact** — `olivier3dprint@gmail.com`.
-- **Pays et régions** — à configurer **par piste**. Une piste sans pays rend l'application
+| Champ | Valeur |
+|---|---|
+| Politique de confidentialité | `https://olivier3dprint.github.io/JeuDeLaRoute/confidentialite.html` |
+| Site web (facultatif — présence à vérifier dans la console) | `https://olivier3dprint.github.io/JeuDeLaRoute/` |
+| Adresse e-mail de contact | `olivier3dprint@gmail.com` |
+
+Rappels pour les prochains envois :
+
+- **Pays et régions** — configurés **par piste**. Une piste sans pays rend l'application
   introuvable, y compris pour les testeurs internes, avec un message « Élément
   introuvable » trompeur dans le Play Store.
-- **Keystore de release** — `keystore.properties` n'existe pas encore dans ce projet (seul
-  `keystore.properties.example` est présent), donc l'AAB actuel n'est pas signé pour la
-  production. À créer et à ranger **hors du dépôt** : le perdre interdit toute mise à jour
-  future.
-- **Test interne d'abord** : aucune revue Google, disponible en minutes. La première
-  soumission en production, elle, prend plusieurs jours. Ensuite **promouvoir** la release
-  plutôt que la re-téléverser, pour publier exactement le binaire testé.
+- **Keystore de release** — `keystore.properties` est en place (hors dépôt, voir
+  `.gitignore`) et signe les builds release. Le keystore lui-même doit rester sauvegardé
+  **hors du dépôt** : le perdre interdit toute mise à jour future de l'application.
+- **`versionCode` strictement croissant** — Play refuse un numéro déjà utilisé, même en
+  test interne (dernier envoyé : 4).
+- **Test interne d'abord** : aucune revue Google, disponible en minutes. Ensuite
+  **promouvoir** la release plutôt que la re-téléverser, pour publier exactement le
+  binaire testé.
